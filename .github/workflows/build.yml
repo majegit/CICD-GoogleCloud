@@ -1,0 +1,19 @@
+name: Pre staging tests
+
+on:
+  push:
+    branches: [ build ]
+  pull_request:
+    branches: [ build ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: test1
+      run: |
+        ls -al
+        git fetch
+    
