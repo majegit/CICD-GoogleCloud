@@ -10,15 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
-      - name: Branch name
-        run: echo running on branch ${GITHUB_REF##*/}
-      - name: test
-        run: git fetch
-      - name: Push to build stage
+      - name: Run tests and merge into staging
         run: |
+          echo "ok"
+          ls -al
+          echo "ok2"
           git checkout ${GITHUB_REF#refs/heads/}
+          ls -al
+      - name: test2
+        run: |
           git rebase origin/staging
           git branch staging
           git push origin staging:staging
