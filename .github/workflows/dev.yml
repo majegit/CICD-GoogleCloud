@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run tests and merge into staging
         run: |
+          git checkout dev
           git rebase origin/staging
           git push origin dev:staging
           
