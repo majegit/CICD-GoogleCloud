@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Git Identity
-      - run: |
+        run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
       - name: Run tests and merge into staging
-      - run: |
+        run: |
           git fetch
           git rebase origin/staging
           git push origin dev:staging
