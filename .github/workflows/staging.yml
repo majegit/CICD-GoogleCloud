@@ -12,4 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: test1
+      run: |
+        ls -al
+        git fetch
     
