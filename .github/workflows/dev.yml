@@ -15,6 +15,8 @@ jobs:
         run: |
           git log --graph --decorate --pretty=oneline --abbrev-commit
           git rebase origin/staging
+      - name: test2
+        run: |
           git branch staging
           git push origin staging:staging
           git push origin :${GITHUB_REF#refs/heads/}
