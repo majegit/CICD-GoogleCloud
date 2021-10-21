@@ -1,0 +1,23 @@
+name: Running tests prior to build stage.
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Git Identity
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+      - name: Run tests and merge into staging
+        run: |
+          git fetch
+          git rebase origin/staging
+          git push origin dev:staging
+          
