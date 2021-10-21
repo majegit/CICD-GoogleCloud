@@ -18,6 +18,6 @@ jobs:
       - name: Run tests and merge into staging
         run: |
           git fetch
-          git rebase origin/staging
+          # git rebase origin/staging
           git push origin dev:staging
           
