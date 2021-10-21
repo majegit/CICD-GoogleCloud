@@ -17,6 +17,9 @@ jobs:
       - name: test
         run: git fetch
       - name: Push to build stage
-        run: git push origin ${GITHUB_REF##*/}:build
-
-
+        run: |
+          git checkout ${GITHUB_REF#refs/heads/}
+          git rebase origin/staging
+          git branch staging
+          git push origin staging:staging
+          git push origin :${GITHUB_REF#refs/heads/}
