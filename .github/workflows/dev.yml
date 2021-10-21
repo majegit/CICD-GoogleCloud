@@ -13,14 +13,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run tests and merge into staging
         run: |
-          echo "ok"
-          ls -al
-          echo "ok2"
-          git checkout ${GITHUB_REF#refs/heads/}
-          ls -al
-      - name: test2
-        run: |
+          git log --graph --decorate --pretty=oneline --abbrev-commit
           git rebase origin/staging
           git branch staging
           git push origin staging:staging
           git push origin :${GITHUB_REF#refs/heads/}
+          
